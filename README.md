@@ -34,3 +34,9 @@ and the patches will be installed!
 
 
 > This is of course not a user friendly process by any means, and should be streamlined with a few scripts.
+
+## Debugging
+
+dnSpy's debugger as described in https://github.com/dnSpy/dnSpy/wiki/Debugging-Unity-Games works on hover.
+Replace the mono.dll with the debug-enabled unity build, and use `Unity (Connect)`-mode in the Start Debugger
+dialog. For some reason it wouldnt work when dnSpy tried to directly launch Hover.

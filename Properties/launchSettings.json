@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Hover": {
+      "commandName": "Executable",
+      "executablePath": ".\\Hover.exe",
+      "workingDirectory": "bin\\Debug\\patched_game",
+      "environmentVariables": {
+        "DNSPY_UNITY_DBG": "--debugger-agent=transport=dt_socket,server=y,address=127.0.0.1:55555,defer=y,no-hide-debugger"
+      },
+      "nativeDebugging": false,
+      "remoteDebugEnabled": false
+    }
+  }
+}

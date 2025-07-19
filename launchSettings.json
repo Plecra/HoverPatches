@@ -1,0 +1,9 @@
+{
+    "profiles": {
+        "Hover": {
+            "commandName": "Executable",
+            "executablePath": "Hover.exe",
+            "workingDirectory": "bin\\Debug\\patched_game"
+        }
+    }
+}

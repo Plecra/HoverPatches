@@ -3,10 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net35</TargetFramework>
   </PropertyGroup>
-	<PropertyGroup>
-		<HoverDirectory Condition=" '$(HoverDirectory)' == '' ">C:/Program Files (x86)/Steam/steamapps/common/Hover</HoverDirectory>
-	</PropertyGroup>
+  <PropertyGroup>
+  	<HoverDirectory Condition=" '$(HoverDirectory)' == '' ">C:/Program Files (x86)/Steam/steamapps/common/Hover</HoverDirectory>
+  </PropertyGroup>
 
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="call postbuild.bat $(HoverDirectory) $(OutputPath) $(AssemblyName)" />
+	</Target>
+	
   <ItemGroup>
     <Reference Include="AlienFXManagedWrapper3.5">
       <HintPath>$(HoverDirectory)/Hover_Data/Managed/AlienFXManagedWrapper3.5.dll</HintPath>
