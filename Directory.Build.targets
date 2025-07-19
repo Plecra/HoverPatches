@@ -1,0 +1,6 @@
+<Project>
+  <Target Name="VerifyDependency" AfterTargets="Build">
+    <Warning Text="Dependency path is not set!" Condition="'$(HoverDirectory)' == ''" />
+    <Error Text="Dependency at $(HoverDirectory) does not exist!" Condition="!Exists('$(HoverDirectory)') And '$(HoverDirectory)' != ''" />
+  </Target>
+</Project>

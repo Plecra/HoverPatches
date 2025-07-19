@@ -1,0 +1,6 @@
+<Project>
+   <PropertyGroup>
+      <HoverDirectory>{{ YOUR HOVER DIRECTORY HERE }}</HoverDirectory>
+   </PropertyGroup>
+</Project>
+{}
