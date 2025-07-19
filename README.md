@@ -1,4 +1,9 @@
+# Patches for Hover: Revolt of Gamers
 
+Hover has seen a strong modding project patching up missing features and adding cheat codes/
+rebalancing progression for long term players. For now, this project is pulling out the patches
+that I want to play with and organising it all into a patch-oriented workflow to make it
+easier to collaborate on.
 
 ## Building
 
