@@ -40,3 +40,23 @@ and the patches will be installed!
 dnSpy's debugger as described in https://github.com/dnSpy/dnSpy/wiki/Debugging-Unity-Games works on hover.
 Replace the mono.dll with the debug-enabled unity build, and use `Unity (Connect)`-mode in the Start Debugger
 dialog. For some reason it wouldnt work when dnSpy tried to directly launch Hover.
+
+## Licensing
+
+My contributions to this project are released to the public domain and licensed as Apache 2.0.
+However, large parts of the implementation were designed by the original mod authors and has no
+licensing - use it only as you see fit.
+
+   Copyright 2025
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
