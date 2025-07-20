@@ -14,4 +14,11 @@ public class patch_Game : Game
        }
        orig_LoadLevel(scene_name, new_spawn_point_code, forceCreateMainPlayer);
     }
+    private extern void orig_Start();
+
+    private void Start()
+    {
+        orig_Start();
+        instance.gameObject.AddComponent<AssetBundleLoader>();
+    }
 }

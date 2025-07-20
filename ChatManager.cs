@@ -61,12 +61,41 @@ public class patch_ChatManager : ChatManager
                     return false;
                 }
             }
+            else
+                if (args[0] == "skybox")
+            {
+                Game.current_player_manager.Teleport(new Vector3(0f, 5001f, 0f));
+                return true;
+            } else if (args[0] == "home")
+            {
+                SpawnPoint.target_spawnpoint_code = SaveManager.GetSpawnPoint();
+                Game.current_player_manager.Teleport(SpawnPoint.instance);
+                return true;
+            }
+            else
+                if (args[0] == "maps")
+            {
+                patch_GuiEtenduManager.ChooseMap();
+                return true;
+            }
+            else if (args[0] == "unload")
+            {
+                FindObjectOfType<AssetBundleLoader>().UnloadBundle();
+                FindObjectOfType<AssetBundleLoader>().UnloadFileBundle();
+                Resources.UnloadUnusedAssets();
+                AddNewComandText("unloaded");
+                return false;
+            }
         }
         
         if (newText.Equals("/"))
         {
             orig_WriteInChat(newText);
             AddNewComandText("     /real shade (on|off) - more realism in shading");
+            AddNewComandText("     /skybox -teleports to skybox");
+            AddNewComandText("     /home -teleports to localbox");
+            AddNewComandText("     /maps - opens custom maps list");
+            AddNewComandText("     /unload - unload currently loaded map");
             AddNewComandText("     /credits - the Modding team!");
             return false;
         }
