@@ -7,7 +7,26 @@ easier to collaborate on.
 
 ## Building
 
-Visual studio can be used to build this. Support for .NET framework 3.5 must be installed.
+Visual studio/build tools can be used to build this.
+
+*Dependencies*
+- Support for .NET framework 3.5 must be installed.
+- MonoMod patcher. `postbuild.bat` currently expects to find `MonoMod.Patcher.exe` in
+  `bin\Debug\patched_game\Hover_Data\Managed`
+
+The build scripts will automate the process when you're building from Visual Studio. Here
+are the steps they go through.
+
+- Build `Hover.Patches.mm.dll` from the csproj. `msbuild` will be able to do this with most versions of "Build Tools for Visual Studio"
+    - The Hover.Patches libraries references the assemblies from the base game, `Assembly-CSharp.dll` in particular.
+      The build scripts use the `HoverDirectory` environment variable to locate them.
+- Now that we have the compiled patches, they must be applied to the game using monomod.
+  The monomod tool is given the name of the assembly to patch: For us, `Assembly-CSharp.dll`.
+  It searches for other dlls in the directory with the same prefix to use as patches, and generates
+  `MONOMODDED_Assembly-CSharp.dll`. To give it our patch then, we put the patch dll in `Hover\Hover_Data\Managed`
+  and rename it to `Hover\Hover_Data\Managed\Assembly-CSharp.Patches.mm.dll`.
+
+Done!
 
 It relies on being able to reference the game files for compilation. By default it will search
 in steam's default installation path, but you can replace the Hover directory by creating a
@@ -31,7 +50,6 @@ mv PATCH_SOURCE_DIR\bin\Release\net35\Hover.Patches.mm.dll .\Assembly-CSharp.Pat
 
 This will generate a new `MONOMODDED_Assembly-CSharp.dll` - use it to replace the game's `Assembly-CSharp.dll`,
 and the patches will be installed!
-
 
 > This is of course not a user friendly process by any means, and should be streamlined with a few scripts.
 
