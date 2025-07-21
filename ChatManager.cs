@@ -21,6 +21,18 @@ public class patch_ChatManager : ChatManager
         if (newText.StartsWith("/"))
         {
             string[] args = newText.Substring(1).ToLower().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (args.Length == 0 || args[0] == "help")
+            {
+                orig_WriteInChat(newText);
+                AddNewComandText("     /real shade (on|off) - more realism in shading");
+                AddNewComandText("     /skybox -teleports to skybox");
+                AddNewComandText("     /home -teleports to localbox");
+                AddNewComandText("     /maps - opens custom maps list");
+                AddNewComandText("     /unload - unload currently loaded map");
+                AddNewComandText("     /credits - the Modding team!");
+                return false;
+            }
             if (args[0] == "real" && args[1] == "shade")
             {
                 if (args[2] == "on" || args[2] == "1")
@@ -88,17 +100,6 @@ public class patch_ChatManager : ChatManager
             }
         }
         
-        if (newText.Equals("/"))
-        {
-            orig_WriteInChat(newText);
-            AddNewComandText("     /real shade (on|off) - more realism in shading");
-            AddNewComandText("     /skybox -teleports to skybox");
-            AddNewComandText("     /home -teleports to localbox");
-            AddNewComandText("     /maps - opens custom maps list");
-            AddNewComandText("     /unload - unload currently loaded map");
-            AddNewComandText("     /credits - the Modding team!");
-            return false;
-        }
         return orig_WriteInChat(newText);
     }
 }
