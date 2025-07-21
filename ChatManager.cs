@@ -26,6 +26,8 @@ public class patch_ChatManager : ChatManager
             {
                 orig_WriteInChat(newText);
                 AddNewComandText("     /real shade (on|off) - more realism in shading");
+                AddNewComandText("     /region | eu (default) | us | jp | au |");
+                AddNewComandText("     /tutorial -moves you to tutorial");
                 AddNewComandText("     /skybox -teleports to skybox");
                 AddNewComandText("     /home -teleports to localbox");
                 AddNewComandText("     /maps - opens custom maps list");
@@ -97,6 +99,39 @@ public class patch_ChatManager : ChatManager
                 Resources.UnloadUnusedAssets();
                 AddNewComandText("unloaded");
                 return false;
+            } else if (args[0] == "tutorial")
+            {
+                Game.instance.LoadLevel("Tuto", "tuto");
+                return true;
+            }
+            else
+                if (args[0] == "region")
+            {
+                CloudRegionCode region;
+                AddNewComandText("Your current region is " + PhotonNetwork.networkingPeer.CloudRegion);
+                if (args.Length == 1) return true;
+
+                switch (args[1])
+                {
+                    case "us":
+                        region = CloudRegionCode.us;
+                        break;
+                    case "jp":
+                        region = CloudRegionCode.jp;
+                        break;
+                    case "au":
+                        region = CloudRegionCode.au;
+                        break;
+                    case "eu":
+                        region = CloudRegionCode.eu;
+                        break;
+                    default:
+                        AddNewComandText("'" + args[1] + "' is not a region. Use us, jp, au, or eu.");
+                        return false;
+                }
+                PhotonNetwork.PhotonServerSettings.PreferredRegion = region;
+                AddNewComandText("Region changed. Go offline and back online to join the server.");
+                return true;
             }
         }
         
