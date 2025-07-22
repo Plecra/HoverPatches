@@ -24,4 +24,27 @@ public class patch_GuiEtenduManager : GuiEtenduManager
             FindObjectOfType<AssetBundleLoader>().LoadFileFromBundle(chosen_map.ToString());
         });
     }
+    
+	public static void ChoosePlayer()
+	{
+		List<string> player_names = new List<string>();
+		List<int> players = new List<int>();
+		foreach (KeyValuePair<int, Player_Manager> item in Game.player_list) {
+			if (item.Value != Game.current_player_manager && item.Value.netIdentity != null && item.Value.gamer_type == GamerType.net) {
+				player_names.Add(item.Value.displayName);
+				players.Add(item.Key);
+			}
+		}
+		if (players.Count == 0) {
+			ChatManager.AddNewComandText("No players to pick");
+			return;
+		}
+		GuiGameInterface.CreateListPopup(0, "GuiGeneral.popupFollowPlayer", player_names.ToArray(), new string[player_names.Count], delegate(GuiListButton button, GuiPopUpManager popUpManager)
+		{
+			if (button != null) {
+				var player = Game.player_list[players[button.indexInList]];
+				if (player != null) patch_Player_Local_Controler.ForceLookAtPlayer(player);
+			}
+		});
+	}
 }

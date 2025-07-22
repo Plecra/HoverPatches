@@ -30,6 +30,7 @@ public class patch_ChatManager : ChatManager
                 AddNewComandText("     /region | eu (default) | us | jp | au |");
                 AddNewComandText("     /tutorial -moves you to tutorial");
                 AddNewComandText("     /color {RED},{GREEN},{BLUE} -change your own color");
+                AddNewComandText("     /find {Player} -get pointed towards a player");
                 AddNewComandText("     /skybox -teleports to skybox");
                 AddNewComandText("     /home -teleports to localbox");
                 AddNewComandText("     /maps - opens custom maps list");
@@ -276,6 +277,26 @@ public class patch_ChatManager : ChatManager
                     return true;
                 } else {
                     AddNewComandText("Correct usage (values are 0-1):\n/color {RED},{GREEN},{BLUE}");
+                    return false;
+                }
+            } else if (args[0] == "find")
+            {
+                if (args.Length == 1) {
+                    patch_GuiEtenduManager.ChoosePlayer();
+                    return true;
+                } else if (args.Length == 2) {
+                    string playerName = args[1].ToLower();
+                    var player = Game.player_list.Values.FirstOrDefault(inroom => inroom.displayName.ToLower().Contains(playerName));
+                    if (player == null)
+                    {
+                        AddNewComandText("Player not found: " + playerName);
+                        return false;
+                    }
+                    patch_Player_Local_Controler.ForceLookAtPlayer(player);
+                    return true;
+                } else {
+                    AddNewComandText("Usage: /find [player name]");
+                    AddNewComandText("Finds a player by name and looks at them.");
                     return false;
                 }
             }
