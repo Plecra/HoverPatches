@@ -61,7 +61,7 @@ dialog. For some reason it wouldnt work when dnSpy tried to directly launch Hove
 
 ## Licensing
 
-My contributions to this project are released to the public domain and licensed as Apache 2.0.
+My contributions to this project are both released to the public domain and licensed as Apache 2.0 at your option.
 However, large parts of the implementation were designed by the original mod authors and has no
 licensing - use it only as you see fit.
 
