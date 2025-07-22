@@ -25,6 +25,7 @@ public class patch_ChatManager : ChatManager
             if (args.Length == 0 || args[0] == "help")
             {
                 orig_WriteInChat(newText);
+                AddNewComandText("     /play - Hover Jukebox v0.1");
                 AddNewComandText("     /real shade (on|off) - more realism in shading");
                 AddNewComandText("     /region | eu (default) | us | jp | au |");
                 AddNewComandText("     /tutorial -moves you to tutorial");
@@ -132,6 +133,138 @@ public class patch_ChatManager : ChatManager
                 PhotonNetwork.PhotonServerSettings.PreferredRegion = region;
                 AddNewComandText("Region changed. Go offline and back online to join the server.");
                 return true;
+            }
+            else
+                if (args[0] == "play")
+            {
+                AddNewComandText("DarkGamer's Edition exclusive");
+                AddNewComandText("Hover Jukebox v0.1");
+                AddNewComandText("Music Change:");
+                AddNewComandText(" /play [song number]");
+                AddNewComandText("       1 .Never 4 Ever");
+                AddNewComandText("       2 .Heaven UP");
+                AddNewComandText("       3 .Inner Reflexion");
+                AddNewComandText("       4 .Underground");
+                AddNewComandText("       5 .Wata's Lounge");
+                AddNewComandText("       6 .Defy the Great Administrator");
+                AddNewComandText("       7 .Enter The City");
+                AddNewComandText("       8 .Furtive Ascencion");
+                AddNewComandText("       9 .Get Ready");
+                AddNewComandText("       0 .Greendy's Trance");
+                AddNewComandText("       ! .Grind-e's Secret Goal");
+                AddNewComandText("       @ .Hi Jump");
+                AddNewComandText("       # .Never Give Up");
+                AddNewComandText("       $ .Supprassing Oneself");
+                AddNewComandText("       % .Try Hard");
+                AddNewComandText("       ^ .Drumbie");
+                switch (args.Length == 1 ? "" : args[1])
+                {
+                    case "2":
+                        Music_Manager.SetCustomMusic("HEAVEN★UP", "HEAVEN★UP INTRO", 2f);
+                        AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                        AddNewComandText("HEAVEN★UP selected");
+                        AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                        return true;
+                    case "1":
+                    Music_Manager.SetCustomMusic("NEVER 4EVER", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Never 4 Ever selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "4":
+                    Music_Manager.SetCustomMusic("UNDERGROUND", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Underground selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "3":
+                    Music_Manager.SetCustomMusic("INNER REFLEXION", "INNER REFLEXION INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Inner Reflexion selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "5":
+                    Music_Manager.SetCustomMusic("WATA'S LOUNGE", "WATA'S LOUNGE INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Wata's Lounge selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "6":
+                    Music_Manager.SetCustomMusic("DEFY THE GREAT ADMIN", "DEFY THE GREAT ADMIN Intro", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Defy Great Administrator selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "7":
+                    Music_Manager.SetCustomMusic("ENTER THE CITY", "ENTER THE CITY MENU", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Enter The City selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "8":
+                    Music_Manager.SetCustomMusic("FURTIVE ASCENCION", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Furtive Ascencion selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "9":
+                    Music_Manager.SetCustomMusic("GET READY", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Get Ready selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "0":
+                    Music_Manager.SetCustomMusic("GREENDY'S TRANCE", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Greendy's Trance selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "!":
+                    Music_Manager.SetCustomMusic("GRIND-E's SECRET GOAL", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Grind-e's Secret Goal selected");
+                    AddNewComandText("Song by Cedric Menendez");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "@":
+                    Music_Manager.SetCustomMusic("HI-JUMP", "HI-JUMP INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Hi Jump selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "#":
+                    Music_Manager.SetCustomMusic("NEVER GIVE UP", "NEVER GIVE UP INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Never Give Up selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "$":
+                    Music_Manager.SetCustomMusic("SURPASSING ONESELF", "SURPASSING ONESELF INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Supprassing Oneself selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "%":
+                    Music_Manager.SetCustomMusic("TRY HARD", "", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Try Hard selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "^":
+                    Music_Manager.SetCustomMusic("DRUMBIE", "DRUMBIE INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("Drumbie selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                    case "easteregg":
+                    Music_Manager.SetCustomMusic("last boss 2nd part", "last boss 2nd part_Intro", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("How did u knew there was one!? ;D");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    return true;
+                }
+                AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                return false;
             }
         }
         
