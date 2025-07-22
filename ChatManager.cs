@@ -29,6 +29,7 @@ public class patch_ChatManager : ChatManager
                 AddNewComandText("     /real shade (on|off) - more realism in shading");
                 AddNewComandText("     /region | eu (default) | us | jp | au |");
                 AddNewComandText("     /tutorial -moves you to tutorial");
+                AddNewComandText("     /color {RED},{GREEN},{BLUE} -change your own color");
                 AddNewComandText("     /skybox -teleports to skybox");
                 AddNewComandText("     /home -teleports to localbox");
                 AddNewComandText("     /maps - opens custom maps list");
@@ -160,10 +161,10 @@ public class patch_ChatManager : ChatManager
                 switch (args.Length == 1 ? "" : args[1])
                 {
                     case "2":
-                        Music_Manager.SetCustomMusic("HEAVEN★UP", "HEAVEN★UP INTRO", 2f);
-                        AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
-                        AddNewComandText("HEAVEN★UP selected");
-                        AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    Music_Manager.SetCustomMusic("HEAVEN★UP", "HEAVEN★UP INTRO", 2f);
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
+                    AddNewComandText("HEAVEN★UP selected");
+                    AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
                         return true;
                     case "1":
                     Music_Manager.SetCustomMusic("NEVER 4EVER", "", 2f);
@@ -265,6 +266,18 @@ public class patch_ChatManager : ChatManager
                 }
                 AddNewComandText("═══════ ♫ ♪ ♫  ♪♫ ♪ ═══════");
                 return false;
+            } else if (args[0] == "color" || args[0] == "colour") {
+                if (args.Length == 4f
+                &&  float.TryParse(args[1], out float red)
+                &&  float.TryParse(args[2], out float green)
+                &&  float.TryParse(args[3], out float blue)) {
+                    instance.mainPlayerColor = new Color(red, green, blue, 1f);
+                    AddNewComandText("Color successfully changed to " + instance.mainPlayerColor.ToString());
+                    return true;
+                } else {
+                    AddNewComandText("Correct usage (values are 0-1):\n/color {RED},{GREEN},{BLUE}");
+                    return false;
+                }
             }
         }
         
